@@ -1,0 +1,16 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: alpine-agent-195318 # You'll need to manually type this out. The environment variable won't work
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels: # labels to select/identify the deployment
+        app: alpine-agent-195318
+    spec:     # pod spec                  
+      containers: 
+      - name: alpine-agent-195318 
+        image: gcr.io/alpine-agent-195318/lambda-backend-devops:v1  # image we pushed
+        ports:
+        - containerPort: 192.168.99.100:8080
